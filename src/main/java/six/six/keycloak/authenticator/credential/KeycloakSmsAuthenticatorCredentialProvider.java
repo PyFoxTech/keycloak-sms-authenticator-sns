@@ -15,6 +15,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import six.six.keycloak.authenticator.KeycloakSmsAuthenticatorFactory;
+
 /**
  * Created by nickpack on 09/08/2017.
  */
@@ -25,6 +27,18 @@ public class KeycloakSmsAuthenticatorCredentialProvider implements CredentialPro
 
     public KeycloakSmsAuthenticatorCredentialProvider(KeycloakSession session) {
         this.session = session;
+    }
+
+    @Override
+    public CredentialTypeMetadata getCredentialTypeMetadata() {
+        return CredentialTypeMetadata.builder()
+                .type(getType())
+                .category(CredentialTypeMetadata.Category.TWO_FACTOR)
+                .displayName(KeycloakSmsAuthenticatorCredentialProviderFactory.PROVIDER_ID)
+                .helpText("SMS Code")
+                .createAction(KeycloakSmsAuthenticatorFactory.PROVIDER_ID)
+                .removeable(false)
+                .build(session);
     }
 
     private CredentialModel getSecret(RealmModel realm, UserModel user) {

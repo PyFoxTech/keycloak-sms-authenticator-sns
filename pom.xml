@@ -58,14 +58,14 @@
             <dependency>
                 <groupId>org.keycloak.bom</groupId>
                 <artifactId>keycloak-spi-bom</artifactId>
-                <version>${version.keycloak}</version>
+                <version>10.0.2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly</artifactId>
-                <version>${version.wildfly}</version>
+                <version>20.0.0.Final</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
